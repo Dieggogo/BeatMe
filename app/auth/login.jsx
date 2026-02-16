@@ -2,8 +2,9 @@ import {
   HoltwoodOneSC_400Regular,
   useFonts,
 } from "@expo-google-fonts/holtwood-one-sc";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router, SplashScreen } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Image,
   ImageBackground,
@@ -18,17 +19,37 @@ import {
 } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
+const ONBOARDING_SEEN_KEY = "@beatme_onboarding_seen";
 
 export default function Login() {
   const [fontsLoaded] = useFonts({
     HoltwoodOneSC_400Regular,
   });
+  const [isCheckingOnboarding, setIsCheckingOnboarding] = useState(true);
 
   useEffect(() => {
     if (fontsLoaded) SplashScreen.hideAsync();
   }, [fontsLoaded]);
 
-  if (!fontsLoaded) return null;
+  useEffect(() => {
+    const checkOnboarding = async () => {
+      try {
+        const seen = await AsyncStorage.getItem(ONBOARDING_SEEN_KEY);
+        if (seen !== "true") {
+          router.replace("/pantallabienvenida");
+          return;
+        }
+      } catch (error) {
+        // If storage fails, continue to login so the app remains usable.
+      } finally {
+        setIsCheckingOnboarding(false);
+      }
+    };
+
+    checkOnboarding();
+  }, []);
+
+  if (!fontsLoaded || isCheckingOnboarding) return null;
 
   return (
     <ImageBackground
