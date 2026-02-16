@@ -10,6 +10,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { images } from "../../constants/images";
 
 const MUSCLE_ZONES = [
   { id: "pecho", name: "Pecho", color: "#ff6b6b", x: "27%", y: "28%" },
@@ -26,30 +27,41 @@ const CreateRutina = () => {
 
   const toggleZone = (zoneId) => {
     setSelectedZones((prev) =>
-      prev.includes(zoneId) ? prev.filter((id) => id !== zoneId) : [...prev, zoneId]
+      prev.includes(zoneId)
+        ? prev.filter((id) => id !== zoneId)
+        : [...prev, zoneId],
     );
   };
 
   const selectedMuscles = useMemo(
     () => MUSCLE_ZONES.filter((zone) => selectedZones.includes(zone.id)),
-    [selectedZones]
+    [selectedZones],
   );
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.header}>
-          <Pressable onPress={() => router.back()} hitSlop={10} style={styles.backButton}>
+          <Pressable
+            onPress={() => router.back()}
+            hitSlop={10}
+            style={styles.backButton}
+          >
             <MaterialCommunityIcons name="arrow-left" size={22} color="#fff" />
           </Pressable>
           <Text style={styles.title}>CREAR RUTINA</Text>
           <View style={styles.spacer} />
         </View>
 
-        <Text style={styles.subtitle}>Selecciona los musculos que quieres trabajar</Text>
+        <Text style={styles.subtitle}>
+          Selecciona los musculos que quieres trabajar
+        </Text>
 
         <View style={styles.mapWrap}>
-          <Image source={require("../assets/images/CUERPO.png")} style={styles.bodyImage} />
+          <Image source={images.cuerpo} style={styles.bodyImage} />
 
           <View style={styles.overlay}>
             {MUSCLE_ZONES.map((zone) => {
@@ -64,7 +76,9 @@ const CreateRutina = () => {
                       left: zone.x,
                       top: zone.y,
                       borderColor: zone.color,
-                      backgroundColor: isSelected ? zone.color : "rgba(0,0,0,0.6)",
+                      backgroundColor: isSelected
+                        ? zone.color
+                        : "rgba(0,0,0,0.6)",
                     },
                   ]}
                 />
@@ -76,15 +90,25 @@ const CreateRutina = () => {
         <Text style={styles.sectionTitle}>Musculos seleccionados</Text>
         <View style={styles.chipsWrap}>
           {selectedMuscles.length === 0 && (
-            <Text style={styles.emptyText}>Aun no has seleccionado musculos</Text>
+            <Text style={styles.emptyText}>
+              Aun no has seleccionado musculos
+            </Text>
           )}
 
           {selectedMuscles.map((muscle) => (
             <View
               key={muscle.id}
-              style={[styles.chip, { borderColor: muscle.color, backgroundColor: `${muscle.color}22` }]}
+              style={[
+                styles.chip,
+                {
+                  borderColor: muscle.color,
+                  backgroundColor: `${muscle.color}22`,
+                },
+              ]}
             >
-              <View style={[styles.chipDot, { backgroundColor: muscle.color }]} />
+              <View
+                style={[styles.chipDot, { backgroundColor: muscle.color }]}
+              />
               <Text style={styles.chipText}>{muscle.name}</Text>
             </View>
           ))}

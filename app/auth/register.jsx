@@ -1,22 +1,23 @@
 import {
-    HoltwoodOneSC_400Regular,
-    useFonts,
+  HoltwoodOneSC_400Regular,
+  useFonts,
 } from "@expo-google-fonts/holtwood-one-sc";
 import { router, SplashScreen } from "expo-router";
 import { useEffect } from "react";
 import {
-    Image,
-    ImageBackground,
-    KeyboardAvoidingView,
-    Platform,
-    Pressable,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
+  Image,
+  ImageBackground,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
+import { images } from "../constants/images";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,11 +31,7 @@ export default function Register() {
   if (!fontsLoaded) return null;
 
   return (
-    <ImageBackground
-      source={require("../../assets/images/bg.png")}
-      resizeMode="cover"
-      style={styles.bg}
-    >
+    <ImageBackground source={images.bg} resizeMode="cover" style={styles.bg}>
       <View style={styles.overlay} />
 
       <SafeAreaView style={styles.safe}>
@@ -50,7 +47,7 @@ export default function Register() {
             {/* Header */}
             <View style={styles.header}>
               <Image
-                source={require("../../assets/images/logo.png")}
+                source={images.logo}
                 style={styles.logo}
                 resizeMode="contain"
               />

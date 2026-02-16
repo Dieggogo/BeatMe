@@ -18,6 +18,8 @@ import {
   View,
 } from "react-native";
 
+import { images } from "../constants/images";
+
 SplashScreen.preventAutoHideAsync();
 const ONBOARDING_SEEN_KEY = "@beatme_onboarding_seen";
 
@@ -39,7 +41,7 @@ export default function Login() {
           router.replace("/pantallabienvenida");
           return;
         }
-      } catch (error) {
+      } catch (_error) {
         // If storage fails, continue to login so the app remains usable.
       } finally {
         setIsCheckingOnboarding(false);
@@ -52,11 +54,7 @@ export default function Login() {
   if (!fontsLoaded || isCheckingOnboarding) return null;
 
   return (
-    <ImageBackground
-      source={require("../../assets/images/bg.png")}
-      resizeMode="cover"
-      style={styles.bg}
-    >
+    <ImageBackground source={images.bg} resizeMode="cover" style={styles.bg}>
       <View style={styles.overlay} />
 
       <SafeAreaView style={styles.safe}>
@@ -66,7 +64,7 @@ export default function Login() {
         >
           <View style={styles.header}>
             <Image
-              source={require("../../assets/images/logo.png")}
+              source={images.logo}
               style={styles.logo}
               resizeMode="contain"
             />
@@ -80,7 +78,7 @@ export default function Login() {
               ¿Es tu primera vez?{" "}
               <Text
                 style={styles.link}
-                onPress={() => router.push("/auth/register")}
+                onPress={() => router.push("../auth/register")}
               >
                 Regístrate
               </Text>
@@ -105,7 +103,7 @@ export default function Login() {
 
             <Pressable
               style={styles.button}
-              onPress={() => router.replace("/tabs/Nutricion")}
+              onPress={() => router.replace("/tabs/Perfil")}
             >
               <Text style={styles.buttonText}>Continuar</Text>
             </Pressable>

@@ -1,20 +1,19 @@
 import { Tabs } from "expo-router";
 import TabBar from "../../components/TabBar";
 
-const _layout = () => {
+export default function TabsLayout() {
   return (
     <Tabs
-      screenOptions={{
-        headerShown: false, // ✅ quita la barra blanca de arriba
-      }}
+      screenOptions={{ headerShown: false }}
       tabBar={(props) => <TabBar {...props} />}
     >
-      <Tabs.Screen name="Nutricion" options={{ title: "Nutricion" }} />
-      <Tabs.Screen name="Entrenamiento" options={{ title: "Entrenamiento" }} />
-      <Tabs.Screen name="Progreso" options={{ title: "Progreso" }} />
-      <Tabs.Screen name="Perfil" options={{ title: "Perfil" }} />
+      <Tabs.Screen name="Nutricion/index" options={{ title: "Nutricion" }} />
+      <Tabs.Screen
+        name="Entrenamiento/index"
+        options={{ title: "Entrenamiento" }}
+      />
+      <Tabs.Screen name="Progreso/index" options={{ title: "Progreso" }} />
+      <Tabs.Screen name="Perfil/index" options={{ title: "Perfil" }} />
     </Tabs>
   );
-};
-
-export default _layout;
+}

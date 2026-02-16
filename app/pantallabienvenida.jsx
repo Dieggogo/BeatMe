@@ -103,7 +103,10 @@ export default function PantallaBienvenida() {
                   {SLIDES.map((slide, index) => (
                     <View
                       key={slide.id}
-                      style={[styles.dot, index === currentIndex && styles.dotActive]}
+                      style={[
+                        styles.dot,
+                        index === currentIndex && styles.dotActive,
+                      ]}
                     />
                   ))}
                 </View>

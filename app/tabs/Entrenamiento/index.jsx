@@ -1,6 +1,5 @@
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { router } from "expo-router";
-import React from "react";
 import {
   Image,
   ImageBackground,
@@ -8,21 +7,44 @@ import {
   Pressable,
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   StatusBar,
+  StyleSheet,
   Text,
   View,
 } from "react-native";
+import { images } from "../../constants/images";
 
 const MY_ROUTINES = [
   { id: "1", title: "PIERNA", exercises: 9, icon: "run-fast", level: "FUERZA" },
-  { id: "2", title: "MIERCOLES", exercises: 6, icon: "dumbbell", level: "CORE" },
-  { id: "3", title: "FULLBODY", exercises: 14, icon: "arm-flex", level: "MIXTO" },
+  {
+    id: "2",
+    title: "MIERCOLES",
+    exercises: 6,
+    icon: "dumbbell",
+    level: "CORE",
+  },
+  {
+    id: "3",
+    title: "FULLBODY",
+    exercises: 14,
+    icon: "arm-flex",
+    level: "MIXTO",
+  },
 ];
 
 const RECOMMENDATIONS = [
-  { id: "1", title: "BELCAST - ESPALDA Y BICEPS", exercises: 7, time: "38 MIN" },
-  { id: "2", title: "MOISES EBRAHIN - PIERNA COMPLETA", exercises: 11, time: "49 MIN" },
+  {
+    id: "1",
+    title: "BELCAST - ESPALDA Y BICEPS",
+    exercises: 7,
+    time: "38 MIN",
+  },
+  {
+    id: "2",
+    title: "MOISES EBRAHIN - PIERNA COMPLETA",
+    exercises: 11,
+    time: "49 MIN",
+  },
   { id: "3", title: "JEFF NIPPARD - FULLBODY", exercises: 14, time: "54 MIN" },
 ];
 
@@ -31,7 +53,10 @@ const SectionTitle = ({ children }) => (
 );
 
 const RoutineCard = ({ title, exercises, icon, level }) => (
-  <Pressable style={styles.card} android_ripple={{ color: "rgba(255,255,255,0.08)" }}>
+  <Pressable
+    style={styles.card}
+    android_ripple={{ color: "rgba(255,255,255,0.08)" }}
+  >
     <View style={styles.cardLeft}>
       <View style={styles.iconWrap}>
         <MaterialCommunityIcons name={icon} size={22} color="#ffb14f" />
@@ -50,12 +75,17 @@ const RoutineCard = ({ title, exercises, icon, level }) => (
 );
 
 const RecommendationCard = ({ title, exercises, time }) => (
-  <Pressable style={styles.card} android_ripple={{ color: "rgba(255,255,255,0.08)" }}>
+  <Pressable
+    style={styles.card}
+    android_ripple={{ color: "rgba(255,255,255,0.08)" }}
+  >
     <View style={styles.cardLeft}>
-      <Image source={require("../../assets/images/gym.png")} resizeMode="cover" style={styles.recoImage} />
+      <Image source={images.gym} resizeMode="cover" style={styles.recoImage} />
       <View>
         <Text style={styles.recoTitle}>{title}</Text>
-        <Text style={styles.cardSubtitle}>{exercises} EJERCICIOS · {time}</Text>
+        <Text style={styles.cardSubtitle}>
+          {exercises} EJERCICIOS · {time}
+        </Text>
       </View>
     </View>
 
@@ -65,15 +95,26 @@ const RecommendationCard = ({ title, exercises, time }) => (
 
 const Entrenamiento = () => {
   return (
-    <ImageBackground source={require("../../assets/images/bg.png")} resizeMode="cover" style={styles.safe}>
+    <ImageBackground source={images.bg} resizeMode="cover" style={styles.safe}>
       <View style={styles.darkOverlay} />
       <View style={styles.tintOverlay} />
 
       <SafeAreaView style={styles.safe}>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.content}
+        >
           <View style={styles.header}>
-            <Pressable onPress={() => router.back()} hitSlop={10} style={styles.backButton}>
-              <MaterialCommunityIcons name="arrow-left" size={22} color="#fff" />
+            <Pressable
+              onPress={() => router.back()}
+              hitSlop={10}
+              style={styles.backButton}
+            >
+              <MaterialCommunityIcons
+                name="arrow-left"
+                size={22}
+                color="#fff"
+              />
             </Pressable>
             <Text style={styles.headerTitle}>ENTRENAMIENTO</Text>
             <View style={styles.headerSpacer} />
@@ -118,7 +159,8 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 18,
-    paddingTop: Platform.OS === "android" ? (StatusBar.currentHeight || 0) + 8 : 10,
+    paddingTop:
+      Platform.OS === "android" ? (StatusBar.currentHeight || 0) + 8 : 10,
     paddingBottom: 130,
   },
   header: {
