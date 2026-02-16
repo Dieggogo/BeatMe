@@ -17,8 +17,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-
-import { images } from "../constants/images";
+import { images } from "../../constants/images";
 
 SplashScreen.preventAutoHideAsync();
 const ONBOARDING_SEEN_KEY = "@beatme_onboarding_seen";

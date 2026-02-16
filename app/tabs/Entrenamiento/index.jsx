@@ -12,7 +12,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { images } from "../../constants/images";
+import { images } from "../../../constants/images";
 
 const MY_ROUTINES = [
   { id: "1", title: "PIERNA", exercises: 9, icon: "run-fast", level: "FUERZA" },
@@ -123,7 +123,7 @@ const Entrenamiento = () => {
           <Pressable
             style={styles.createButton}
             android_ripple={{ color: "rgba(255,255,255,0.12)" }}
-            onPress={() => router.push("/crearrutina")}
+            onPress={() => router.push("tabs/Entrenamiento/crearrutina")}
           >
             <MaterialCommunityIcons name="plus" size={18} color="#fff" />
             <Text style={styles.createButtonText}>CREAR RUTINA</Text>

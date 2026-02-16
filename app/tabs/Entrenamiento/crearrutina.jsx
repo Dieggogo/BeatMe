@@ -10,7 +10,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { images } from "../../constants/images";
+import { images } from "../../../constants/images";
 
 const MUSCLE_ZONES = [
   { id: "pecho", name: "Pecho", color: "#ff6b6b", x: "27%", y: "28%" },

@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { useMemo } from "react";
 import {
   Pressable,
@@ -226,7 +227,10 @@ const Nutricion = () => {
 
         {/* ✅ BOTÓN FIJO ABAJO */}
         <View style={[styles.stickyCtaWrap, { bottom: TABBAR_HEIGHT + 10 }]}>
-          <Pressable style={styles.cta} onPress={() => {}}>
+          <Pressable
+            style={styles.cta}
+            onPress={() => router.push("/tabs/Nutricion/registrarcomida")}
+          >
             <Text style={styles.ctaText}>REGISTRAR COMIDA</Text>
           </Pressable>
         </View>
