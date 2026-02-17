@@ -13,7 +13,7 @@ import Svg, { Path } from "react-native-svg";
 
 const TABBAR_HEIGHT = 90; // aprox: tu TabBar (paddingTop 20 + paddingBottom 30 + contenido)
 const CTA_HEIGHT = 56; // altura del botón
-const HEADER_HEIGHT = 100; // altura del título fijo
+const HEADER_HEIGHT = 85; // altura del título fijo
 
 const Nutricion = () => {
   // ------- Datos mock (UI) -------

@@ -2,13 +2,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useMemo, useState } from "react";
 import {
-    Pressable,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 
 const TABBAR_HEIGHT = 90;
@@ -156,7 +156,10 @@ const RegistrarComida = () => {
 
         {/* Botón fijo */}
         <View style={styles.ctaWrap}>
-          <Pressable style={styles.cta} onPress={() => {}}>
+          <Pressable
+            style={styles.cta}
+            onPress={() => router.push("/tabs/Nutricion/nuevacomida")}
+          >
             <Text style={styles.ctaText}>REGISTRAR NUEVA COMIDA</Text>
           </Pressable>
         </View>
@@ -170,12 +173,13 @@ const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: "#121212" },
 
   header: {
-    height: 56,
+    height: 85,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 16,
     justifyContent: "space-between",
     backgroundColor: "#121212",
+    paddingTop: 30,
   },
   backBtn: {
     width: 40,
@@ -183,7 +187,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  headerTitle: { color: "#F3F3F3", fontWeight: "900", letterSpacing: 1.1 },
+  headerTitle: {
+    color: "#F3F3F3",
+    fontWeight: "bold",
+    letterSpacing: 1.2,
+    marginTop: 20,
+    fontSize: 20,
+  },
 
   // fondo tipo degradado (simulado con overlay naranja)
   // si quieres degradado real luego lo hacemos con expo-linear-gradient
