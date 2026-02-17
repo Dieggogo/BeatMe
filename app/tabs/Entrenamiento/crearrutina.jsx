@@ -18,6 +18,8 @@ const ACTIVE_ORANGE = "#fd7607";
 const MUSCLE_GROUPS = [
   { id: "pecho", name: "Pecho", color: ACTIVE_ORANGE },
   { id: "hombro", name: "Hombro", color: ACTIVE_ORANGE },
+  { id: "biceps", name: "Biceps", color: ACTIVE_ORANGE },
+  { id: "triceps", name: "Triceps", color: ACTIVE_ORANGE },
 ];
 
 const CreateRutina = () => {
@@ -102,6 +104,78 @@ const CreateRutina = () => {
                   }
                 />
               </Svg>
+
+              <Svg viewBox="0 0 49 127" style={styles.leftBicepsSvg}>
+                <Path
+                  d="M28 6.79639L35 0.796387L38 6.79639L41 12.7964L45.5 20.7964L48 29.7964L48.5 36.2964V47.7964L48 60.2964L46.5 67.7964L45.5 75.2964L44 81.7964L42.5 87.7964L40.5 96.2964L38 104.796L33.5 113.296L26.5 120.296L22.5 122.796L18 125.296L13.5 126.296L10.5 125.296L6.5 122.796L4.5 117.796L2 111.296L0.5 100.296V81.2964L1.5 70.2964L5.5 52.2964L8 43.7964L9.5 38.7964L14 27.7964L18 19.7964L22 14.2964L28 6.79639Z"
+                  onPress={() => toggleGroup("biceps")}
+                  fill={
+                    isActive("biceps")
+                      ? "rgba(253,118,7,0.60)"
+                      : "rgba(253,118,7,0.02)"
+                  }
+                />
+              </Svg>
+
+              <Svg viewBox="0 0 51 126" style={styles.rightBicepsSvg}>
+                <Path
+                  d="M10.0063 10.2638L15.5063 0.763809L21.5063 5.76381L27.0063 12.2638L31.5063 18.2638L35.5063 26.2638L39.0063 34.7638L41.5063 43.7638L44.0063 51.7638L46.0063 59.7638L47.5063 70.2638L49.0063 76.7638V82.7638L50.0063 91.2638L49.5063 105.764L47.5063 115.764L44.5063 124.264L37.5063 125.264L32.0063 123.264L26.5063 120.764L20.5063 114.264L14.0063 106.264L10.0063 96.2638L7.50635 82.7638L5.50635 69.2638L1.50635 47.7638L0.506348 33.7638L5.50635 20.2638L10.0063 10.2638Z"
+                  onPress={() => toggleGroup("biceps")}
+                  fill={
+                    isActive("biceps")
+                      ? "rgba(253,118,7,0.60)"
+                      : "rgba(253,118,7,0.02)"
+                  }
+                />
+              </Svg>
+
+              <Svg viewBox="0 0 23 79" style={styles.leftTricepsFrontSvg}>
+                <Path
+                  d="M12.5 1.16278L21.5 17.1628L17 30.1628L14.5 43.1628L12.5 57.1628V78.1628L7 76.1628L3.5 72.1628L0.5 66.6628V51.6628V39.6628L3.5 25.6628L7 15.1628L12.5 1.16278Z"
+                  onPress={() => toggleGroup("triceps")}
+                  fill={
+                    isActive("triceps")
+                      ? "rgba(253,118,7,0.60)"
+                      : "rgba(253,118,7,0.02)"
+                  }
+                />
+              </Svg>
+
+              <Svg viewBox="0 0 25 80" style={styles.rightTricepsFrontSvg}>
+                <Path
+                  d="M0.534668 16.325L9.03467 0.824951L11.5347 3.32495L14.5347 13.325L18.0347 22.325L21.0347 32.825L23.0347 42.825L24.0347 63.325L22.0347 64.825V73.325L20.0347 73.825L16.5347 77.825L10.5347 78.825V69.325L9.53467 58.325L8.03467 47.825L4.53467 31.325L0.534668 16.325Z"
+                  onPress={() => toggleGroup("triceps")}
+                  fill={
+                    isActive("triceps")
+                      ? "rgba(253,118,7,0.60)"
+                      : "rgba(253,118,7,0.02)"
+                  }
+                />
+              </Svg>
+
+              <Svg viewBox="0 0 63 158" style={styles.leftTricepsBackSvg}>
+                <Path
+                  d="M37.5002 11.6378L52.5002 0.637787L56.0002 3.63779L57.5002 7.63779L60.0002 15.1378V24.1378L61.0002 39.1378L61.7502 45.8878L62.5002 52.6378V66.1378L60.0002 80.6378L57.5002 94.6378L51.5002 109.138L47.0002 116.138L41.0002 122.638L34.5002 128.638L32.0002 135.138L27.5002 146.638L24.5002 152.138L18.5002 157.138H15.0002L11.5002 155.138L8.50024 150.638L6.00024 145.138L5.00024 138.138V117.138L4.00024 111.638L1.00024 101.638L0.500244 90.6378L1.00024 74.6378L3.50024 62.6378L7.50024 51.1378L13.5002 40.1378L20.0002 30.6378L28.5002 20.6378L37.5002 11.6378Z"
+                  onPress={() => toggleGroup("triceps")}
+                  fill={
+                    isActive("triceps")
+                      ? "rgba(253,118,7,0.60)"
+                      : "rgba(253,118,7,0.02)"
+                  }
+                />
+              </Svg>
+
+              <Svg viewBox="0 0 63 159" style={styles.rightTricepsBackSvg}>
+                <Path
+                  d="M27.5 13.1531L10 0.653061L8 2.65306L5 8.65306L2.5 22.6531L0.5 47.6531V72.6531L4 86.1531L6 96.1531L11 107.653L17 119.153L26.5 128.153L29.5 133.153L34 143.653L37.5 150.653L44 157.153L48 157.653L54.5 152.653L57.5 143.653V121.153L58.5 117.653L62.5 102.653V75.1531L57 54.1531L49.5 39.1531L38.5 24.6531L27.5 13.1531Z"
+                  onPress={() => toggleGroup("triceps")}
+                  fill={
+                    isActive("triceps")
+                      ? "rgba(253,118,7,0.60)"
+                      : "rgba(253,118,7,0.02)"
+                  }
+                />
+              </Svg>
             </View>
           </ImageBackground>
         </View>
@@ -148,28 +222,30 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingHorizontal: 16,
-    paddingTop: 8,
+    paddingTop: 0,
     paddingBottom: 24,
   },
   header: {
+    height: 85,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingTop: 30,
     marginBottom: 8,
   },
   backButton: {
-    width: 30,
-    height: 30,
-    borderRadius: 99,
-    backgroundColor: "rgba(255,255,255,0.08)",
+    width: 40,
+    height: 40,
     alignItems: "center",
     justifyContent: "center",
   },
-  spacer: { width: 30 },
+  spacer: { width: 40 },
   title: {
-    color: "#fff",
-    fontSize: 22,
-    fontWeight: "900",
+    color: "#F3F3F3",
+    fontWeight: "bold",
+    letterSpacing: 1.2,
+    marginTop: 20,
+    fontSize: 20,
   },
   subtitle: {
     color: "#c8c8c8",
@@ -201,17 +277,59 @@ const styles = StyleSheet.create({
   },
   leftShoulderSvg: {
     position: "absolute",
-    left: "4.6%",
-    top: "21.8%",
-    width: "10.7%",
-    height: "9.3%",
+    left: "10.11%",
+    top: "27.21%",
+    width: "9.52%",
+    height: "6.09%",
   },
   rightShoulderSvg: {
     position: "absolute",
-    left: "33.6%",
-    top: "21.9%",
-    width: "10.6%",
-    height: "9.2%",
+    left: "29.30%",
+    top: "27.25%",
+    width: "9.28%",
+    height: "6.02%",
+  },
+  leftBicepsSvg: {
+    position: "absolute",
+    left: "10.25%",
+    top: "31.05%",
+    width: "4.69%",
+    height: "8.17%",
+  },
+  rightBicepsSvg: {
+    position: "absolute",
+    left: "33.74%",
+    top: "31.09%",
+    width: "4.83%",
+    height: "8.11%",
+  },
+  leftTricepsFrontSvg: {
+    position: "absolute",
+    left: "9.08%",
+    top: "32.42%",
+    width: "2.05%",
+    height: "5.01%",
+  },
+  rightTricepsFrontSvg: {
+    position: "absolute",
+    left: "37.60%",
+    top: "32.32%",
+    width: "2.29%",
+    height: "5.08%",
+  },
+  leftTricepsBackSvg: {
+    position: "absolute",
+    left: "57.96%",
+    top: "30.89%",
+    width: "6.05%",
+    height: "10.19%",
+  },
+  rightTricepsBackSvg: {
+    position: "absolute",
+    left: "84.18%",
+    top: "30.86%",
+    width: "6.05%",
+    height: "10.22%",
   },
   sectionTitle: {
     color: "#fff",
