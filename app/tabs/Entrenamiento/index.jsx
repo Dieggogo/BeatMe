@@ -123,7 +123,7 @@ const Entrenamiento = () => {
           <Pressable
             style={styles.createButton}
             android_ripple={{ color: "rgba(255,255,255,0.12)" }}
-            onPress={() => router.push("tabs/Entrenamiento/crearrutina")}
+            onPress={() => router.push("/tabs/Entrenamiento/crearrutina")}
           >
             <MaterialCommunityIcons name="plus" size={18} color="#fff" />
             <Text style={styles.createButtonText}>CREAR RUTINA</Text>
