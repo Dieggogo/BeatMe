@@ -56,27 +56,42 @@ const RegistrarComida = () => {
     [],
   );
 
-  // Estado de acordeón (qué categorías están abiertas)
-  const [open, setOpen] = useState({
-    favoritos: false,
-    desayunos: false,
-    comidas: false,
-    cenas: true, // como en tu imagen (puedes poner false si quieres)
-    jugos: true, // abierto para mostrar lista
-    licuados: false,
-  });
+  // ✅ Estado inicial automático: todas cerradas
+  const initialOpen = useMemo(() => {
+    const obj = {};
+    data.forEach((cat) => (obj[cat.key] = false));
+    return obj;
+  }, [data]);
+
+  const [open, setOpen] = useState(initialOpen);
 
   const toggle = (key) => setOpen((prev) => ({ ...prev, [key]: !prev[key] }));
 
   // Filtro simple (UI)
-  const filtered = data.map((cat) => {
-    if (!q.trim()) return cat;
+  const filtered = useMemo(() => {
     const qq = q.trim().toLowerCase();
-    return {
+    if (!qq) return data;
+
+    return data.map((cat) => ({
       ...cat,
       items: cat.items.filter((it) => it.name.toLowerCase().includes(qq)),
-    };
-  });
+    }));
+  }, [q, data]);
+
+  // ✅ SOLO alimentos navegan
+  const goToFoodDetail = (cat, it) => {
+    router.push({
+      pathname: "/tabs/Nutricion/detallealimento", // cambia si tu ruta es otra
+      params: {
+        category: cat.key,
+        name: it.name,
+        kcal: it.kcal,
+        p: it.p,
+        c: it.c,
+        g: it.g,
+      },
+    });
+  };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -111,8 +126,12 @@ const RegistrarComida = () => {
           {/* Acordeones */}
           {filtered.map((cat) => (
             <View key={cat.key} style={styles.block}>
+              {/* Categoría SOLO abre/cierra */}
               <Pressable
-                style={styles.blockHeader}
+                style={({ pressed }) => [
+                  styles.blockHeader,
+                  pressed && { opacity: 0.9 },
+                ]}
                 onPress={() => toggle(cat.key)}
               >
                 <View style={styles.blockLeft}>
@@ -133,9 +152,15 @@ const RegistrarComida = () => {
                     <Text style={styles.emptyText}>Sin elementos</Text>
                   ) : (
                     cat.items.map((it, idx) => (
-                      <View
+                      // ✅ ALIMENTO presionable
+                      <Pressable
                         key={`${cat.key}-${it.name}-${idx}`}
-                        style={[styles.row, idx !== 0 && styles.rowTopLine]}
+                        onPress={() => goToFoodDetail(cat, it)}
+                        style={({ pressed }) => [
+                          styles.row,
+                          idx !== 0 && styles.rowTopLine,
+                          pressed && { opacity: 0.85 },
+                        ]}
                       >
                         <View style={{ flex: 1 }}>
                           <Text style={styles.rowName}>{it.name}</Text>
@@ -145,7 +170,7 @@ const RegistrarComida = () => {
                         </View>
 
                         <Text style={styles.rowKcal}>{it.kcal}</Text>
-                      </View>
+                      </Pressable>
                     ))
                   )}
                 </View>
@@ -157,7 +182,7 @@ const RegistrarComida = () => {
         {/* Botón fijo */}
         <View style={styles.ctaWrap}>
           <Pressable
-            style={styles.cta}
+            style={({ pressed }) => [styles.cta, pressed && { opacity: 0.9 }]}
             onPress={() => router.push("/tabs/Nutricion/nuevacomida")}
           >
             <Text style={styles.ctaText}>REGISTRAR NUEVA COMIDA</Text>
@@ -195,8 +220,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 
-  // fondo tipo degradado (simulado con overlay naranja)
-  // si quieres degradado real luego lo hacemos con expo-linear-gradient
   searchWrap: {
     marginTop: 10,
     marginHorizontal: 16,
