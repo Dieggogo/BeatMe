@@ -19,10 +19,192 @@ const RegistrarComida = () => {
   // Categorías (UI mock)
   const data = useMemo(
     () => [
-      { key: "favoritos", title: "Favoritos", icon: "star", items: [] },
-      { key: "desayunos", title: "Desayunos", icon: "egg", items: [] },
-      { key: "comidas", title: "Comidas", icon: "fast-food", items: [] },
-      { key: "cenas", title: "Cenas", icon: "moon", items: [] },
+      {
+        key: "favoritos",
+        title: "Favoritos",
+        icon: "star",
+        items: [
+          {
+            name: "Huevos revueltos",
+            kcal: "150 kcal",
+            p: "12g",
+            c: "1g",
+            g: "10g",
+          },
+          {
+            name: "Avena con plátano",
+            kcal: "310 kcal",
+            p: "10g",
+            c: "55g",
+            g: "6g",
+          },
+          {
+            name: "Pechuga de pollo con arroz",
+            kcal: "520 kcal",
+            p: "40g",
+            c: "55g",
+            g: "12g",
+          },
+        ],
+      },
+
+      {
+        key: "desayunos",
+        title: "Desayunos",
+        icon: "egg",
+        items: [
+          {
+            name: "Huevos revueltos",
+            kcal: "150 kcal",
+            p: "12g",
+            c: "1g",
+            g: "10g",
+          },
+          {
+            name: "Huevos con jamón",
+            kcal: "220 kcal",
+            p: "18g",
+            c: "2g",
+            g: "14g",
+          },
+          {
+            name: "Omelette de queso",
+            kcal: "280 kcal",
+            p: "18g",
+            c: "2g",
+            g: "22g",
+          },
+          {
+            name: "Avena con plátano",
+            kcal: "310 kcal",
+            p: "10g",
+            c: "55g",
+            g: "6g",
+          },
+          {
+            name: "Yogurt griego con granola",
+            kcal: "260 kcal",
+            p: "18g",
+            c: "30g",
+            g: "6g",
+          },
+          {
+            name: "Hotcakes",
+            kcal: "175 kcal",
+            p: "4g",
+            c: "25g",
+            g: "5g",
+          },
+          {
+            name: "Tostadas de aguacate",
+            kcal: "320 kcal",
+            p: "8g",
+            c: "35g",
+            g: "16g",
+          },
+          {
+            name: "Chilaquiles rojos",
+            kcal: "480 kcal",
+            p: "16g",
+            c: "60g",
+            g: "20g",
+          },
+        ],
+      },
+
+      {
+        key: "comidas",
+        title: "Comidas",
+        icon: "fast-food",
+        items: [
+          {
+            name: "Pechuga de pollo con arroz",
+            kcal: "520 kcal",
+            p: "40g",
+            c: "55g",
+            g: "12g",
+          },
+          {
+            name: "Carne asada con ensalada",
+            kcal: "600 kcal",
+            p: "45g",
+            c: "15g",
+            g: "38g",
+          },
+          {
+            name: "Tacos de pollo",
+            kcal: "480 kcal",
+            p: "28g",
+            c: "45g",
+            g: "18g",
+          },
+          {
+            name: "Pasta con atún",
+            kcal: "540 kcal",
+            p: "28g",
+            c: "70g",
+            g: "14g",
+          },
+          {
+            name: "Ensalada César con pollo",
+            kcal: "450 kcal",
+            p: "32g",
+            c: "18g",
+            g: "26g",
+          },
+          {
+            name: "Burrito de frijol y queso",
+            kcal: "560 kcal",
+            p: "22g",
+            c: "75g",
+            g: "18g",
+          },
+        ],
+      },
+
+      {
+        key: "cenas",
+        title: "Cenas",
+        icon: "moon",
+        items: [
+          {
+            name: "Atún con galletas saladas",
+            kcal: "320 kcal",
+            p: "28g",
+            c: "24g",
+            g: "10g",
+          },
+          {
+            name: "Sándwich de pavo",
+            kcal: "380 kcal",
+            p: "26g",
+            c: "40g",
+            g: "12g",
+          },
+          {
+            name: "Quesadillas de queso",
+            kcal: "420 kcal",
+            p: "18g",
+            c: "44g",
+            g: "18g",
+          },
+          {
+            name: "Ensalada de atún",
+            kcal: "350 kcal",
+            p: "30g",
+            c: "10g",
+            g: "20g",
+          },
+          {
+            name: "Tostadas de pollo",
+            kcal: "460 kcal",
+            p: "26g",
+            c: "42g",
+            g: "18g",
+          },
+        ],
+      },
+
       {
         key: "jugos",
         title: "Jugos",
@@ -30,28 +212,56 @@ const RegistrarComida = () => {
         items: [
           {
             name: "Jugo de Mango",
-            kcal: "51 kcal - 100 ml",
+            kcal: "51 kcal",
             p: "0.1g",
             c: "13.1g",
             g: "0.06g",
           },
           {
             name: "Jaztea",
-            kcal: "30 kcal - 100 ml",
+            kcal: "30 kcal",
             p: "0g",
             c: "7.5g",
             g: "0g",
           },
           {
             name: "Coca Cola",
-            kcal: "30 kcal - 100 ml",
+            kcal: "30 kcal",
             p: "0g",
             c: "7.5g",
             g: "0g",
           },
         ],
       },
-      { key: "licuados", title: "Licuados", icon: "cafe", items: [] },
+
+      {
+        key: "licuados",
+        title: "Licuados",
+        icon: "cafe",
+        items: [
+          {
+            name: "Licuado de plátano",
+            kcal: "160 kcal - 100 ml",
+            p: "3g",
+            c: "30g",
+            g: "3g",
+          },
+          {
+            name: "Licuado de fresa",
+            kcal: "140 kcal - 100 ml",
+            p: "3g",
+            c: "26g",
+            g: "3g",
+          },
+          {
+            name: "Licuado de avena",
+            kcal: "190 kcal - 100 ml",
+            p: "4g",
+            c: "32g",
+            g: "5g",
+          },
+        ],
+      },
     ],
     [],
   );
